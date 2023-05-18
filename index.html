@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pizza Menu</title>
+  <style>
+    body {
+      background-image: url("images/Bg.jpg");
+      background-repeat: no-repeat;
+    }
+
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+      position: sticky;
+      top: 0;
+      width: 100%;
+    }
+
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      font-family: cursive;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .topnav a:hover {
+      background-color: #bbb;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="topnav">
+    <a href="#">Home</a>
+    <a href="#">Menu</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <h1>Pizza Menu</h1>
+
+  <h2>Display Menu</h2>
+  <div id="displayMenu"></div>
+
+  <h2>Add Item</h2>
+  <input type="text" id="addItem">
+  <button onclick="addTop()">Add to Top</button>
+
+  <h2>Added Menu</h2>
+  <div id="displayAddedMenu"></div>
+
+  <script>
+    var menuListArray = ["Pizza Vegetariana", "Pizza de Frango", "Pizza Portuguesa", "Pizza Quatro Queijos", "Pizza de Calabresa", "Pizza Extravaganza"];
+
+    function getMenu() {
+      var htmldata = '';
+      menuListArray.sort();
+      for (var i = 0; i < menuListArray.length; i++) {
+        htmldata = htmldata + menuListArray[i] + '<br>';
+      }
+      document.getElementById("displayMenu").innerHTML = htmldata;
+    }
+
+    function addItem() {
+      var htmldata;
+      var imgtags = '<img id="im1" src="images/pizzaImg.png"/>';
+      var item = document.getElementById("addItem").value;
+      menuListArray.sort();
+      htmldata = "";
+      for (var i = 0; i < menuListArray.length; i++) {
+        htmldata = htmldata + imgtags + menuListArray[i] + '<br>';
+      }
+      document.getElementById("displayAddedMenu").innerHTML = htmldata;
+    }
+
+    function addTop() {
+      var item = document.getElementById("addItem").value;
+      menuListArray.push(item);
+      addItem();
+    }
+
+    getMenu();
+  </script>
+</body>
+</html>
+
+
+
+
